@@ -1,4 +1,4 @@
-=== S3Bubble Wordpress Backup ===
+=== S3Bubble Amazon S3 Backup ===
 Contributors: Samuel East
 Donate link: https://s3bubble.com
 Tags: Amazon, Amazon S3, CDN, Cloud, Cloud front, Wordpress, Storage, media, websites, webpage, secure, back up, back ups, plugin, S3bubble, data, database, data backup, data recovery, file, file backup, file recovery, database recovery, database backup
@@ -17,15 +17,16 @@ Sites can get hacked, you could accidentally delete something vital, and crashes
 But with the S3bubble Backup Plug-in, you can rest assured that your Wordpress site can be easily recovered. 
 
 The S3bubble Backup Plugin offers you a totally controllable one stop way to store your data securely and ensure you webpage is safe.
-=Secure installation process.=
-=Scheduling.=
-=Database and file backup options.=
-=Backup Analytics.=
-=Email notification system.=
-=File compression.=
-=Backups stored in S3bubble.=
-=High security storage of files.=
+
 **Functions:**
+**Secure installation process.**
+**Scheduling.**
+**Database and file backup options.**
+**Backup Analytics.**
+**Email notification system.**
+**File compression.**
+**Backups stored in S3bubble.**
+**High security storage of files.**
 
 Download the plugin or Sign Up for an account at [S3Bubble](https://s3bubble.com/auth/?action=register&utm_source=wordpress&utm_medium=link&utm_campaign=wordpresspluginpage "S3bubble")
 
