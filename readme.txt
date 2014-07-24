@@ -18,6 +18,14 @@ But with the S3bubble Backup Plug-in, you can rest assured that your Wordpress s
 
 The S3bubble Backup Plugin offers you a totally controllable one stop way to store your data securely and ensure you webpage is safe.
 
+= Params - these can be added to the shortcode =
+* bucket: //your amazon bucket
+* folder: //your amazon s3 folder
+* autoplay: //true or false 
+* height: //height of the player
+* playlist: //hidden
+* style: plain //hide bar on single audio player 
+
 **Functions:**
 *Secure installation process,
 *Scheduling,
