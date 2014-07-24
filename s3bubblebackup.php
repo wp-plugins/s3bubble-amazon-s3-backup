@@ -2,12 +2,11 @@
 /*
 Plugin Name: S3Bubble Amazon S3 Backup
 Plugin URI: https://s3bubble.com
-Description: Allow users of the S3Bubble service to back directly to Amazon S3.
-Version: 1.9.1
+Description: The S3bubble Backup Plugin offers you a totally controllable one stop way to store your data securely and ensure you webpage is safe.
+Version: 0.1
 Author: S3Bubble
 Author URI: https://s3bubble.com
 Text Domain: s3bubble
-Domain Path: i18n
 */
 
 if(!defined('WP_S3BUBBLEBACKUP_OPTIONS')) 				define('WP_S3BUBBLEBACKUP_OPTIONS', 's3bubblebackup_options');
