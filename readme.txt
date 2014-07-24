@@ -28,16 +28,6 @@ The S3bubble Backup Plugin offers you a totally controllable one stop way to sto
 * Backups stored in S3bubble
 * High security storage of files
 
-**Functions:**
-*Secure installation process,
-*Scheduling,
-*Database and file backup options,
-*Backup Analytics,
-*Email notification system,
-*File compression,
-*Backups stored in S3bubble,
-*High security storage of files,
-
 Download the plugin or Sign Up for an account at [S3Bubble](https://s3bubble.com/auth/?action=register&utm_source=wordpress&utm_medium=link&utm_campaign=wordpresspluginpage "S3bubble")
 
 [youtube https://www.youtube.com/watch?v=niqugoI8gis]
