@@ -165,14 +165,14 @@ function s3bubblebackup_run_database($mode = 'auto') {
             if (file_exists($file)) {
 				unlink($file);
 			}
-			$url = admin_url( 'admin.php?page=s3bubble-backup/s3bubblebackup-list.php');
+			$url = admin_url( 'admin.php?page=s3bubble-amazon-s3-backup/s3bubblebackup-list.php');
             $result = 'Successfully backed up and uploaded - <a href="' . $url . '">View backup now!</a>';
 		}
 		catch (Exception $e) {
             if (file_exists($file)) {
 				unlink($file);
 			}
-			$url = admin_url( 'admin.php?page=s3bubble-backup/s3bubblebackup.php');
+			$url = admin_url( 'admin.php?page=s3bubble-amazon-s3-backup/s3bubblebackup.php');
 	        $result = 'ERROR: ' . $e -> getMessage() . ' - <a href="' . $url . '">Please check details!</a>';
 		}
 
@@ -252,7 +252,7 @@ function s3bubblebackup_run_files($mode = 'auto') {
 		if (file_exists($filename)) {
 			unlink($filename);
 		}
-		$url = admin_url( 'admin.php?page=s3bubble-backup/s3bubblebackup-list.php');
+		$url = admin_url( 'admin.php?page=s3bubble-amazon-s3-backup/s3bubblebackup-list.php');
         $result = 'Successfully backed up and uploaded - <a href="' . $url . '">View backup now!</a>';
 		
 		
@@ -261,7 +261,7 @@ function s3bubblebackup_run_files($mode = 'auto') {
 		if (file_exists($filename)) {
 			unlink($filename);
 		}
-		$url = admin_url( 'admin.php?page=s3bubble-backup/s3bubblebackup.php');
+		$url = admin_url( 'admin.php?page=s3bubble-amazon-s3-backup/s3bubblebackup.php');
         $result = 'ERROR: ' . $e -> getMessage() . ' - <a href="' . $url . '">Please check details!</a>';
 
 	}
