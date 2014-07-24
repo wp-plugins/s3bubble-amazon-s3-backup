@@ -18,7 +18,7 @@ But with the S3bubble Backup Plug-in, you can rest assured that your Wordpress s
 
 The S3bubble Backup Plugin offers you a totally controllable one stop way to store your data securely and ensure you webpage is safe.
 
-Functions:
+**Functions:**
 1. Secure installation process.
 2. Scheduling.
 3. Database and file backup options.
@@ -29,6 +29,8 @@ Functions:
 8. High security storage of files.
 
 Download the plugin or Sign Up for an account at [S3Bubble](https://s3bubble.com/auth/?action=register&utm_source=wordpress&utm_medium=link&utm_campaign=wordpresspluginpage "S3bubble")
+
+[youtube https://www.youtube.com/watch?v=niqugoI8gis]
 
 == Installation ==
 
