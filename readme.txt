@@ -40,7 +40,16 @@ Once you’ve installed the S3Bubble plug-in, you’ll need to create an S3Bubbl
 
 == Frequently Asked Questions ==
 
+**Does it backup my files?**
+Yes S3Bubble makes a full backup of your wp-content folder and uploads to Amazon S3 securely.
+
 == Screenshots ==
+
+1. Record video from mobile and directly upload
+2. Enter your S3Bubble email and password to create a sync
+3. Sync your Amazon S3 Keys with S3Bubble Admin
+4. Upload your file ready to stream
+5. All your file video,audio and image all stored securely within buckets
 
 == Changelog ==
 
