@@ -17,8 +17,6 @@ Sites can get hacked, you could accidentally delete something vital, and crashes
 But with the S3bubble Backup Plug-in, you can rest assured that your Wordpress site can be easily recovered. 
 
 The S3bubble Backup Plugin offers you a totally controllable one stop way to store your data securely and ensure you webpage is safe.
-
-**Functions:**
 =Secure installation process.=
 =Scheduling.=
 =Database and file backup options.=
@@ -27,6 +25,7 @@ The S3bubble Backup Plugin offers you a totally controllable one stop way to sto
 =File compression.=
 =Backups stored in S3bubble.=
 =High security storage of files.=
+**Functions:**
 
 Download the plugin or Sign Up for an account at [S3Bubble](https://s3bubble.com/auth/?action=register&utm_source=wordpress&utm_medium=link&utm_campaign=wordpresspluginpage "S3bubble")
 
