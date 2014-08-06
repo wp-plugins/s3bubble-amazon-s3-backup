@@ -11,12 +11,7 @@
 	    use Aws\S3\S3Client;
 	require_once('inc/functions.php');
 	if(isset($_POST['s3bubblecontentcreate'])) {
-		global $wpdb;
-		if(function_exists('exec')) {
-			echo '<div id="message" class="updated fade"><p>'.s3bubblebackup_run_files().'</p></div>';
-		}else{
-			echo '<div id="message" class="updated fade"><p>'.s3bubblebackup_run_files_noexec().'</p></div>';
-		}
+		echo '<div id="message" class="updated fade"><p>'.s3bubblebackup_run_files().'</p></div>';
 	}
 	?>
 	<div class="postbox-container" style="width: 50%">

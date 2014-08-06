@@ -214,9 +214,13 @@ function s3bubblebackup_run_files($mode = 'auto') {
 	$wp_version = get_bloginfo('version');	// Blog Version
 	$timestamp = current_time('timestamp');	// Current time
 	$backup_file_name = 'backup_'.date('Y_m_d_H_i_s', $timestamp).'_wordpress_v'.$wp_version.'.tar.gz';
-	chdir($upload_dir);
-	chdir("../../");
-	exec('tar -czf '.$backup_file_name.' --exclude="s3bubblebackups*" wp-content/ && mv '.$backup_file_name.' wp-content/s3bubblebackups');
+	if(function_exists('exec')) {
+		chdir($upload_dir);
+		chdir("../../");
+		exec('tar -czf '.$backup_file_name.' --exclude="s3bubblebackups*" wp-content/ && mv '.$backup_file_name.' wp-content/s3bubblebackups');
+	}else{
+		Zip(WP_CONTENT_DIR . '/', WP_CONTENT_DIR . '/s3bubblebackups/' . $backup_file_name);
+	}
 	/*
 	 * Upload files to Amazon S3
 	 */
@@ -271,90 +275,6 @@ function s3bubblebackup_run_files($mode = 'auto') {
 	$cfg['logs'][] 	= 	array ('file' => $filename, 'size' => @filesize($filename), 'started' => $timenow, 'took' => $time_total, 'status'	=> $result);					
 	update_option('s3bubblebackup_options', $cfg);
 	return $result;
-}
-
-
-/*
- * Back the contents of the wp-content folder wihtout exec
- * @author sam
- * @params
- */
-function s3bubblebackup_run_files_noexec($mode = 'auto') {
-	
-	global $wpdb;
-	// increased resources for slow servers or large databases
-	@ini_set('memory_limit','256M'); // 256 megabytes
-	@ini_set('max_execution_time', 600); // 300 seconds = 5 minutes
-	@date_default_timezone_set(get_option('timezone_string'));
-	// end resource increase
-	if(defined('S3BUBBLE_BACKUP_RETURN')) return;
-	
-	$timenow 			= 	time();
-    $mtime 				= 	explode(' ', microtime());
-    $time_start 		= 	$mtime[1] + $mtime[0];
-	
-	$wp_version = get_bloginfo('version');	// Blog Version
-	$timestamp = current_time('timestamp');	// Current time
-	$backup_file_name = 'backup_'.date('Y_m_d_H_i_s', $timestamp).'_wordpress_v'.$wp_version.'.tar.gz';
-	
-	Zip(WP_CONTENT_DIR . '/', WP_CONTENT_DIR . '/s3bubblebackups/' . $backup_file_name);
-	
-	/*
-	 * Upload files to Amazon S3
-	 */
-	$surl = S3BUBBLEBACKUP_PLUGIN_PATH . '/classes/vendor/autoload.php';	
-		if(!class_exists('S3Client'))
-	        require_once($surl);
-	if(!defined('awsAccessKey')) define('awsAccessKey', get_option('s3_access_key'));
-	if(!defined('awsSecretKey')) define('awsSecretKey', get_option('s3_secret_key'));
-	$client = S3Client::factory(array(
-		'key' => awsAccessKey,
-		'secret' => awsSecretKey
-	));
-
-	$bucket = get_option('s3_bucket_name');
-	$cfg = get_option('s3bubblebackup_options'); 
-	$filename = $cfg['export_dir'] . '/' . $backup_file_name;
-	try {
-
-		$return = $client->putObject(array(
-		    'Bucket' => get_option('s3_bucket_name'),
-		    'Key'    => basename($filename),
-		    'SourceFile' => $filename
-		));
-		
-		$furl  = $client -> getObjectUrl(get_option('s3_bucket_name'), basename($filename), '+59 minutes');
-		// send confirmation email
-		$s3bubble_email = get_option('s3bubble_email');
-		$s3bubble_subject = get_bloginfo() . ' ' . date('m/d/y H:i:s', $timenow) . ' new filesystem backup available!';
-		$headers = "From: support@s3bubble.com\r\n";
-		$headers .= "Reply-To: support@s3bubble.com\r\n";
-		$headers .= "Content-type: text/html\r\n";
-		wp_mail($s3bubble_email, $s3bubble_subject, 'S3Bubble a new filesystem backup is now available! <a href="' . $furl . '">Download Backup</a> This link will expire in 59 minutes.', $headers);
-		if (file_exists($filename)) {
-			unlink($filename);
-		}
-		$url = admin_url( 'admin.php?page=s3bubble-amazon-s3-backup/s3bubblebackup-list.php');
-        $result = 'Successfully backed up and uploaded - <a href="' . $url . '">View backup now!</a>';
-		
-		
-	}
-	catch (Exception $e) {
-		if (file_exists($filename)) {
-			unlink($filename);
-		}
-		$url = admin_url( 'admin.php?page=s3bubble-amazon-s3-backup/s3bubblebackup.php');
-        $result = 'ERROR: ' . $e -> getMessage() . ' - <a href="' . $url . '">Please check details!</a>';
-
-	}
-	$mtime 			= 	explode(' ', microtime());
-	$time_end 		= 	$mtime[1] + $mtime[0];
-	$time_total 	= 	$time_end - $time_start;
-	$cfg['logs'][] 	= 	array ('file' => $filename, 'size' => @filesize($filename), 'started' => $timenow, 'took' => $time_total, 'status'	=> $result);					
-	update_option('s3bubblebackup_options', $cfg);
-	return $result;
-	
-	return true;
 }
 
 /*
