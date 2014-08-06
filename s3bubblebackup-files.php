@@ -1,6 +1,10 @@
 <div class="wrap">
 	<h2><div class="dashicons dashicons-cloud"></div> Files Manager</h2>
 	<?php
+	if(!function_exists('curl_multi_exec') || !function_exists('curl_init')) {
+		echo "This plugin requires PHP curl to connect to Amazon S3 please contact your hosting to install.";
+		exit();
+	}
 	$surl = S3BUBBLEBACKUP_PLUGIN_PATH . '/classes/vendor/autoload.php';	
 	if(!class_exists('S3Client'))
         require_once($surl);
@@ -8,7 +12,11 @@
 	require_once('inc/functions.php');
 	if(isset($_POST['s3bubblecontentcreate'])) {
 		global $wpdb;
-		echo '<div id="message" class="updated fade"><p>'.s3bubblebackup_run_files().'</p></div>';
+		if(function_exists('exec')) {
+			echo '<div id="message" class="updated fade"><p>'.s3bubblebackup_run_files().'</p></div>';
+		}else{
+			echo '<div id="message" class="updated fade"><p>'.s3bubblebackup_run_files_noexec().'</p></div>';
+		}
 	}
 	?>
 	<div class="postbox-container" style="width: 50%">

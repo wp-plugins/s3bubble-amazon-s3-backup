@@ -7,7 +7,13 @@ if(isset($_POST['submit_s3bubble_now'])) {
 }
 ?>
 <div class="wrap">
-	<h2><div class="dashicons dashicons-cloud"></div> S3Bubble Backup</h2>					
+	<h2><div class="dashicons dashicons-cloud"></div> S3Bubble Backup</h2>	
+	<?php
+	if(!function_exists('curl_multi_exec') || !function_exists('curl_init')) {
+		echo "This plugin requires PHP curl to connect to Amazon S3 please contact your hosting to install.";
+		exit();
+	}
+	?>				
 	<div class="postbox-container" style="width: 50%">
 		<div class="metabox-holder">
 			<div class="postbox" style="margin: 0;">

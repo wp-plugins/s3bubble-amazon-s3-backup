@@ -341,10 +341,14 @@ function memory_limit() {
  * @params 
  */
 function exec_check($content_dir) {
-	if(exec('echo EXEC') == 'EXEC'){
-		 $output = shell_exec("cd {$content_dir} && du -sh --exclude='s3bubblebackups*'");
-		 return '<li>Your setup has passed the backup check function.<i class="wp-menu-image dashicons-before dashicons-yes" style="color: green;"></i></li>';
-	} 
+	if(function_exists('exec')) {
+		if(exec('echo EXEC') == 'EXEC'){
+			 $output = shell_exec("cd {$content_dir} && du -sh --exclude='s3bubblebackups*'");
+			 return '<li>Your setup has passed the backup check function.<i class="wp-menu-image dashicons-before dashicons-yes" style="color: green;"></i></li>';
+		} 
+	}else{
+		 return '<li>Exec function is not available defaulting to PHP ZIP Archive.<i class="wp-menu-image dashicons-before dashicons-yes" style="color: green;"></i></li>';
+	}
 }	
 
 /*

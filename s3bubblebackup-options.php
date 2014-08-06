@@ -1,5 +1,6 @@
 <?php
 date_default_timezone_set(get_option('timezone_string'));
+
 $surl = S3BUBBLEBACKUP_PLUGIN_PATH . '/classes/vendor/autoload.php';	
 if(!class_exists('S3Client'))
     require_once($surl);
@@ -78,20 +79,24 @@ if(isset($_POST['s3bubblesubmit'])) {
 <div class="wrap">
 	<h2><div class="dashicons dashicons-cloud"></div> S3Bubble Backup</h2>					
 	<div class="postbox-container" style="width: 50%">
+		<?php
+			if(!function_exists('curl_multi_exec') || !function_exists('curl_init')) {
+				echo "This plugin requires PHP curl to connect to Amazon S3 please contact your hosting to install.";
+				exit();
+			}
+			try {
+				$iterator = $client -> listObjects(array(
+					'Bucket' => get_option('s3_bucket_name')
+				));
+				$buckets = $iterator->toArray();
+				$awscheck = '<i class="wp-menu-image dashicons-before dashicons-yes" style="color: green;"></i>';
+			}
+			catch (Exception $e) {
+				$awscheck = '<i class="wp-menu-image dashicons-before dashicons-no" style="color: red;"></i>';
+			} 
+		?>
 		<div class="metabox-holder">
 			<div class="postbox s3bubble-enhance">
-			<?php
-				try {
-					$iterator = $client -> listObjects(array(
-						'Bucket' => get_option('s3_bucket_name')
-					));
-					$buckets = $iterator->toArray();
-					$awscheck = '<i class="wp-menu-image dashicons-before dashicons-yes" style="color: green;"></i>';
-				}
-				catch (Exception $e) {
-					$awscheck = '<i class="wp-menu-image dashicons-before dashicons-no" style="color: red;"></i>';
-				} 
-			?>
 				<h3 class="hndle"><span>S3Bubble App Settings <?php echo $awscheck; ?></span></h3>
 				<div class="inside">
 					<form method="post" action=""> 

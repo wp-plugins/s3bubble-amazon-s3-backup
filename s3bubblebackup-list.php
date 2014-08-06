@@ -26,6 +26,10 @@ if(isset($_POST['s3bubble-delete-file'])) {
 	</div>
 	<h2><div class="dashicons dashicons-cloud" style="font-size: 28px;margin-right: 6px;"></div> S3Bubble Amazon S3 Backups <small style="float: right;font-size: 14px;font-style: italic;">Bucket: <?php echo get_option('s3_bucket_name'); ?></small></h2>
 	<?php
+	if(!function_exists('curl_multi_exec') || !function_exists('curl_init')) {
+		echo "This plugin requires PHP curl to connect to Amazon S3 please contact your hosting to install.";
+		exit();
+	}
 	if(!class_exists('S3Client'))
         require_once($surl);  
 
