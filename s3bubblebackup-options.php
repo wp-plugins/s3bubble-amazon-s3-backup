@@ -108,7 +108,7 @@ if(isset($_POST['s3bubblesubmit'])) {
                         </p>
                         <p>
                         	<label for="s3_secret_key">S3Bubble App Secret Key</label><br>
-                            <input name="s3_secret_key" id="s3_secret_key" placeholder="S3Bubble App Secret Key" value="<?php echo get_option('s3_secret_key'); ?>" class="regular-text" type="text">
+                            <input name="s3_secret_key" id="s3_secret_key" placeholder="S3Bubble App Secret Key" value="<?php echo get_option('s3_secret_key'); ?>" class="regular-text" type="password">
                             
                         </p>
                         <p>
