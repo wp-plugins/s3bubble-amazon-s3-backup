@@ -3,7 +3,7 @@ Contributors: Samuel East
 Donate link: https://s3bubble.com
 Tags: Amazon, Amazon S3, CDN, Cloud, Cloud front, Wordpress, Storage, media, websites, webpage, secure, back up, back ups, plugin, S3bubble, data, database, data backup, data recovery, file, file backup, file recovery, database recovery, database backup
 Requires at least: 2.0
-Tested up to: 0.1
+Tested up to: 4.0
 Stable tag: 0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
