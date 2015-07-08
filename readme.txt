@@ -1,7 +1,7 @@
-=== S3Bubble Amazon S3 Backup ===
+=== Amazon S3 Backup ===
 Contributors: Samuel East
 Donate link: https://s3bubble.com
-Tags: Amazon, Amazon S3, CDN, Cloud, Cloud front, Wordpress, Storage, media, websites, webpage, secure, back up, back ups, plugin, S3bubble, data, database, data backup, data recovery, file, file backup, file recovery, database recovery, database backup
+Tags: Depreciated
 Requires at least: 2.0
 Tested up to: 4.1
 Stable tag: 0.2
