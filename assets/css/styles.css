@@ -1,11 +1,19 @@
 #toplevel_page_s3bubble-amazon-s3-backup-s3bubblebackup .wp-menu-image img {
-	padding-top: 4px;
+	padding-top: 6px;
 }
 #toplevel_page_s3bubble-amazon-s3-backup-s3bubblebackup .wp-menu-name {
 	font-size: 13px;
 }
 #s3bubble-backup-backingup {
 	display: none;
+}
+.s3bck {
+    background-color: #eee;
+    padding: 20px;
+    text-align: center;
+}
+.s3bck img {
+	width: 120px;
 }
 /* tables */
 table#tablesorter-demo {

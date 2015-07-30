@@ -345,6 +345,50 @@ function s3bubblebackup_interval() {
 }
 
 /*
+* S3Bubble run a file backup
+* @author sameast
+* @none
+*/
+add_action( 'wp_ajax_s3bubble_backup_files_internal', 's3bubble_backup_files_internal_callback' );
+
+function s3bubble_backup_files_internal_callback(){
+	
+	// Run security check
+	check_ajax_referer( 's3bubble-nonce-security', 'security' );
+
+	if(isset($_POST)) {
+		echo json_encode(s3bubblebackup_run_files());
+	}else{
+		echo json_encode("There has been a error please contact support@s3bubble.com.");
+	}
+
+	wp_die();	
+	
+}
+
+/*
+* S3Bubble run a sql backup
+* @author sameast
+* @none
+*/
+add_action( 'wp_ajax_s3bubble_backup_sql_internal', 's3bubble_backup_sql_internal_callback' );
+
+function s3bubble_backup_sql_internal_callback(){
+	
+	// Run security check
+	check_ajax_referer( 's3bubble-nonce-security', 'security' );
+
+	if(isset($_POST)) {
+		echo json_encode(s3bubblebackup_run_database('backupnow'));
+	}else{
+		echo json_encode("There has been a error please contact support@s3bubble.com.");
+	}
+
+	wp_die();	
+	
+}
+
+/*
  * Clear all ajax functions
  */
 add_action( 'wp_ajax_s3bubble_backup_clear_all', 's3bubble_backup_clear_all_callback' );
@@ -364,6 +408,7 @@ function s3bubble_backup_clear_all_callback() {
 }
 
 add_action( 's3bubble_backup_clear_local_backups', 's3bubble_backup_clear_local_backups_hourly' );
+
 /**
  * On the scheduled action hook, run the function.
  */
